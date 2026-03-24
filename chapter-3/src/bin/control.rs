@@ -1,27 +1,33 @@
 use std::io::{self, Write};
 
 fn main(){
-    print!("enter a number: ");
-    io::stdout().flush().unwrap();
-
-    let mut input = String::new();
-    io::stdin()
+    loop {
+        
+        print!("enter a number: ");
+        io::stdout().flush().unwrap();
+        
+        let mut input = String::new();
+        io::stdin()
         .read_line(&mut input)
         .expect("error reading input");
-
-    match input.trim().parse() {
-        Ok(num) => {
-            even_odd(num);
-
-            if is_even(num) {
-                println!("is_even: even");
+    
+        match input.trim().parse() {
+            Ok(num) => {
+                even_odd(num);
+                
+                if is_even(num) {
+                    println!("is_even: even");
+                }
+                else {
+                    println!("is_even: odd");
+                }
+            },
+            Err(_) => {
+                println!("invalid number");
+                break;
             }
-            else {
-                println!("is_even: odd");
-            }
-        },
-        Err(_) => println!("invalid number"),
-    };
+        };
+    }
 }
 
 fn even_odd (num: i32) {
