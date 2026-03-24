@@ -11,7 +11,7 @@ fn main(){
 
     let arr = [1,2,3,4,5];
     let ar2: [i32; 5] = [1,2,3,4,5];
-    let arr3 = [1, 5]; // all 5 indexes init with val 1
+    let arr3 = [1; 5]; // all 5 indexes init with val 1
 
     println!("arr[0] = {}", arr[0]);
 
