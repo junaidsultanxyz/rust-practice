@@ -1,3 +1,5 @@
+use std::future::Pending;
+
 #[derive(Debug)]
 enum IpKind {
     V4,
@@ -40,7 +42,9 @@ impl Message {
     }
 }
 
-fn main() { 
+fn main() {
+    println!("## Chapter 6");
+    println!("#### 6.1");
     let pc_ip_local = IpAddressStruct {
         kind: IpKind::V4,
         address: String::from("192.168.100.10")
@@ -92,4 +96,55 @@ fn main() {
     
     println!("sum of {value} + {some_value:?} = {sum}");
     println!("sum of {value} + {some_value_converted} (converted) = {sum2}");
+
+
+    /* ######################################################################### */
+    /* 6.2                                                                       */
+    /* ######################################################################### */
+    println!("\n#### 6.2");
+
+    #[derive(Debug)]
+    enum UsState {
+        Alabama,
+        Alaska,
+    }
+
+    enum Coin {
+        Penny,
+        Nickel,
+        Dime,
+        Quarter(UsState)
+    }
+
+    fn value_in_cents(coin: Coin) -> u8 {
+        match coin {
+            Coin::Penny => 1,
+            Coin::Nickel => 5,
+            Coin::Dime => 10,
+            Coin::Quarter(state) => {
+                println!("State quarter from {state:?}");
+                25
+            },
+        }
+    }
+
+    let penny = Coin::Penny;
+    let nickel = Coin::Nickel;
+    let dime = Coin::Dime;
+    let alabama_quarter = Coin::Quarter(UsState::Alabama);
+    let alaska_quarter = Coin::Quarter(UsState::Alaska);
+    
+
+    println!("penny = {}", value_in_cents(penny));
+    println!("nickel = {}", value_in_cents(nickel));
+    println!("dime = {}", value_in_cents(dime));
+    println!("alabama_quarter = {}", value_in_cents(alabama_quarter));
+    println!("alaska_quarter = {}", value_in_cents(alaska_quarter));
+
+    let dice_roll = 3;
+    match dice_roll {
+        3 => println!("a fancy hat!"),
+        7 => println!("removing hat :("),
+        _ => () // nothing
+    }
 }
