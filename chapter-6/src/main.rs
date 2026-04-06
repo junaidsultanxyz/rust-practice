@@ -1,5 +1,3 @@
-use std::future::Pending;
-
 #[derive(Debug)]
 enum IpKind {
     V4,
