@@ -7,3 +7,4 @@ In this repository, I practice rust using [The Rust Programming Language](https:
 - **Chapter 3**: Variables, mutability, const, shadowing, data types (scalar and compound), functions, control flow (match, if else, types of loops), practice programs
 - **Chapter 4**: Ownership, Borrowing, Referencing, Slicing
 - **Chapter 5**: Struct, Struct Methods
+- **Chapter 6**: Enums creation, varients, Option<T>, if let else, enum matching, controlling Option
