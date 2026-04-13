@@ -1,3 +1,5 @@
+use chapter_7::eat_at_restaurant;
+
 use crate::garden::vegetables::Asparagus; // cannot find it unless we add the module and it is visible
 
 // inline module
@@ -13,4 +15,6 @@ mod garden; // includes all the public modules inside garden.
 fn main() {
     let plant = Asparagus;
     println!("I'm growing {plant:?}!");
+
+    eat_at_restaurant();
 }
