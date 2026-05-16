@@ -9,3 +9,4 @@ In this repository, I practice rust using [The Rust Programming Language](https:
 - **Chapter 5**: Struct, Struct Methods
 - **Chapter 6**: Enums creation, varients, Option<T>, if let else, enum matching, controlling Option
 - **Chapter 7**: Splitting packages into crates, and crates into modules- multi file project and module decleration and scope- `use` explanation
+- Chapter 8: Common data structures (collections) . Vectors, Strings, HashMaps
