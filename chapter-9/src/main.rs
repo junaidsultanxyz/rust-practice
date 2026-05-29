@@ -1,7 +1,8 @@
 use std::fs::File;
+use std::error::Error;
 use std::io::{self, ErrorKind, Read};
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     let file_name = "hello.txt";
     let file_result = File::open(&file_name);
 
@@ -46,11 +47,19 @@ fn main() {
     };
 
 
-    let username = read_username_from_file(&file_name).unwrap_or_else(|error| {
-        panic!("failed to read username: {error:?}");
+    // let username = read_username_from_file(&file_name).unwrap_or_else(|error| {
+    //    panic!("failed to read username from file: {error:?}");
+    //});
+
+    let username = read_username_from_file_2(&file_name).unwrap_or_else(|error| {
+        panic!("failed to read username from file: {error:?}");
     });
 
     println!("username: {username}");
+
+    let last_character = last_char(&username).unwrap();
+    println!("last character: {last_character}");
+
 }
 
 fn read_username_from_file(file_name: &str) -> Result<String, io::Error> {
@@ -65,4 +74,21 @@ fn read_username_from_file(file_name: &str) -> Result<String, io::Error> {
         Ok(_) => Ok(username),
         Err(e) => Err(e),
     }
+}
+
+fn read_username_from_file_2 (file_name: &str) -> Result<String, io::Error> {
+    let mut username = String::new();
+
+
+    // we can use ? when theres chance for error. its like using match.
+    // when there is no issue, we get the Ok. and if there is any error,
+    // it returns the error.
+    // ? is only used in functions whose return type is comaptible with value of ?
+    // it can also be Option, or Result
+    File::open(file_name)?.read_to_string(&mut username)?;
+    Ok(username)
+}
+
+fn last_char(text: &str) -> Option<char> {
+    text.lines().next()?.chars().last()
 }
